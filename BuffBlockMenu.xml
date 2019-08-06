@@ -86,10 +86,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(00);
+						BuffBlock_GetOption("BattleShout");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(00);
+						BuffBlock_SetOption("BattleShout");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -103,10 +103,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(01);
+						BuffBlock_GetOption("BlessingOfSalvation");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(01);
+						BuffBlock_SetOption("BlessingOfSalvation");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -120,14 +120,14 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(02);
+						BuffBlock_GetOption("GreaterBlessingOfSalvation");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(02);
+						BuffBlock_SetOption("GreaterBlessingOfSalvation");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
-			<CheckButton name="DivineSpiritCheckbox" inherits="BuffBlockCheckboxTemplate">
+			<CheckButton name="LightCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="GreaterSalvationCheckbox">
 						<Offset>
@@ -137,10 +137,146 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(03);
+						BuffBlock_GetOption("BlessingOfLight");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(03);
+						BuffBlock_SetOption("BlessingOfLight");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="GreaterLightCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="LightCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("GreaterBlessingOfLight");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("GreaterBlessingOfLight");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="SanctuaryCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="GreaterLightCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("BlessingOfSanctuary");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("BlessingOfSanctuary");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="GreaterSanctuaryCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="SanctuaryCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("GreaterBlessingOfSanctuary");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("GreaterBlessingOfSanctuary");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="MightCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="GreaterSanctuaryCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("BlessingOfMight");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("BlessingOfMight");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="GreaterMightCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MightCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("GreaterBlessingOfMight");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("GreaterBlessingOfMight");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="ThornsCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="GreaterMightCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("Thorns");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("Thorns");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="BloodthirstCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="ThornsCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("Bloodthirst");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("Bloodthirst");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="DivineSpiritCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="BloodthirstCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("DivineSpirit");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("DivineSpirit");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -154,10 +290,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(04);
+						BuffBlock_GetOption("PrayerOfSpirit");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(04);
+						BuffBlock_SetOption("PrayerOfSpirit");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -171,10 +307,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(05);
+						BuffBlock_GetOption("ArcaneIntellect");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(05);
+						BuffBlock_SetOption("ArcaneIntellect");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -188,10 +324,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(06);
+						BuffBlock_GetOption("ArcaneBrilliance");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(06);
+						BuffBlock_SetOption("ArcaneBrilliance");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -205,10 +341,112 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(07);
+						BuffBlock_GetOption("BlessingOfProtection");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(07);
+						BuffBlock_SetOption("BlessingOfProtection");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="AbolishPoisonCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="BlessingOfProtectionCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("AbolishPoison");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("AbolishPoison");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="AbolishDiseaseCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AbolishPoisonCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("AbolishDisease");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("AbolishDisease");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="RenewCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AbolishDiseaseCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("Renew");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("Renew");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="RejuvenationCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="RenewCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("Rejuvenation");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("Rejuvenation");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="RegrowthCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="RejuvenationCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("Regrowth");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("Regrowth");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="InspirationCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="RegrowthCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("Inspiration");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("Inspiration");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
