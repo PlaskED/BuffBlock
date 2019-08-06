@@ -24,6 +24,7 @@ local BuffBlockMenuStrings = {
    "Rejuvenation" = "Rejuvenation",
    "Regrowth" = "Regrowth",
    "Inspiration" = "Inspiration",
+   "DivineIntervention" = "Divine Intervention",
 }
 
 function BuffBlock_OnLoad()
