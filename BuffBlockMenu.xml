@@ -450,6 +450,23 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
+			<CheckButton name="DivineInterventionCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="InspirationCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetOption("DivineIntervention");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetOption("DivineIntervention");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
 			<Button name="BuffBlockClose" inherits="GameMenuButtonTemplate" text="Close">
 				<Anchors>
 					<Anchor point="CENTER" relativePoint="BOTTOM" relativeTo="BuffBlockOptions">
