@@ -1,0 +1,14 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="BuffBlock.lua"/>
+	<Frame name="BuffBlockFrame" hidden="true">
+		<Scripts>
+			<OnLoad>
+				BuffBlock_OnLoad();
+			</OnLoad>
+			<OnEvent>
+				BuffBlock_OnEvent();
+			</OnEvent>
+		</Scripts>
+	</Frame>
+</Ui>

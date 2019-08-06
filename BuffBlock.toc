@@ -1,0 +1,8 @@
+## Interface: 11302
+## Title: |c66CD00Buff Block by Plask
+## Version: 1.4
+## Author: Plask
+## SavedVariables: BUFF_CONFIG
+## Notes: Automatically removes selected buffs
+BuffBlock.xml
+BuffBlockMenu.xml
