@@ -2,29 +2,29 @@ local BB_PlayerName = nil;
 local BB_default = {};
 local BuffBlockMenuObjects = {};
 local BuffBlockMenuStrings = {
-   "BattleShout" = "Battle Shout",
-   "BlessingOfSalvation" = "Blessing of Salvation",
-   "GreaterBlessingOfSalvation" = "Greater Blessing of Salvation",
-   "BlessingOfLight" = "Blessing of Light",
-   "GreaterBlessingOfLight" = "Greater Blessing of Light",
-   "BlessingOfSanctuary" = "Blessing of Sanctuary",
-   "GreaterBlessingOfSanctuary" = "Greater Blessing of Sanctuary",
-   "BlessingOfMight" = "Blessing of Might",
-   "GreaterBlessingOfMight" = "Greater Blessing of Might",
-   "Thorns" = "Thorns",
-   "Bloodthirst" = "Bloodthirst",
-   "DivineSpirit" = "Divine Spirit",
-   "PrayerOfSpirit" = "Prayer of Spirit",
-   "ArcaneIntellect" = "Arcane Intellect",
-   "ArcaneBrilliance" = "Arcane Brilliance",
-   "BlessingOfProtection" = "Blessing of Protection",
-   "AbolishPoison" = "Abolish Poison",
-   "AbolishDisease" = "Abolish Disease",
-   "Renew" = "Renew",
-   "Rejuvenation" = "Rejuvenation",
-   "Regrowth" = "Regrowth",
-   "Inspiration" = "Inspiration",
-   "DivineIntervention" = "Divine Intervention",
+   ["BattleShout"] = "Battle Shout",
+   ["BlessingOfSalvation"] = "Blessing of Salvation",
+   ["GreaterBlessingOfSalvation"] = "Greater Blessing of Salvation",
+   ["BlessingOfLight"] = "Blessing of Light",
+   ["GreaterBlessingOfLight"] = "Greater Blessing of Light",
+   ["BlessingOfSanctuary"] = "Blessing of Sanctuary",
+   ["GreaterBlessingOfSanctuary"] = "Greater Blessing of Sanctuary",
+   ["BlessingOfMight"] = "Blessing of Might",
+   ["GreaterBlessingOfMight"] = "Greater Blessing of Might",
+   ["Thorns"] = "Thorns",
+   ["Bloodthirst"] = "Bloodthirst",
+   ["DivineSpirit"] = "Divine Spirit",
+   ["PrayerOfSpirit"] = "Prayer of Spirit",
+   ["ArcaneIntellect"] = "Arcane Intellect",
+   ["ArcaneBrilliance"] = "Arcane Brilliance",
+   ["BlessingOfProtection"] = "Blessing of Protection",
+   ["AbolishPoison"] = "Abolish Poison",
+   ["AbolishDisease"] = "Abolish Disease",
+   ["Renew"] = "Renew",
+   ["Rejuvenation"] = "Rejuvenation",
+   ["Regrowth"] = "Regrowth",
+   ["Inspiration"] = "Inspiration",
+   ["DivineIntervention"] = "Divine Intervention",
 }
 
 function BuffBlock_OnLoad()
@@ -49,9 +49,9 @@ end;
 
 function BuffBlock_OnEvent()
    if (event == "UNIT_AURA") then
-      local unit = select(1, ...)
+      local unit = select(1, event);
       if unit == "player" then
-	 Kill_Buffs();
+		Kill_Buffs();
       end;
    elseif (event == "VARIABLES_LOADED") then
       BuffBlock_Init();
@@ -114,7 +114,7 @@ function Kill_Buffs()
    local i = 1;
    local buff = UnitBuff("player", i, "CANCELABLE");
    while buff do
-      local buffName = select(1, ...);
+      local buffName = select(1, buff);
       
       --DEFAULT_CHAT_FRAME:AddMessage("DEBUG: "..texture, 1, 1, 0.5);
 

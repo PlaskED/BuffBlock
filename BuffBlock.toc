@@ -1,5 +1,5 @@
 ## Interface: 11302
-## Title: |c66CD00Buff Block by Plask
+## Title: BuffBlock
 ## Version: 1.4
 ## Author: Plask
 ## SavedVariables: BUFF_CONFIG
