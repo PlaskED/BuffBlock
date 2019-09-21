@@ -28,8 +28,8 @@ local BuffBlockMenuStrings = {
 }
 
 function BuffBlock_OnLoad()
-   this:RegisterEvent("UNIT_AURA");
-   this:RegisterEvent("VARIABLES_LOADED");
+   this:RegisterUnitEvent("UNIT_AURA", "player");
+   this:RegisterEvent("ADDON_LOADED", "BuffBlock);
    DEFAULT_CHAT_FRAME:AddMessage("Buff Block. /BB for options", 1, 1, 0.5);
    SLASH_BB1 = "/BB";
    SlashCmdList["BB"] = BuffBlock_Command;
@@ -47,14 +47,11 @@ function BuffBlock_Init()
    end;
 end;
 
-function BuffBlock_OnEvent()
+function BuffBlock_OnEvent(event)
    if (event == "UNIT_AURA") then
-      local unit = select(1, event);
-      if unit == "player" then
 		Kill_Buffs();
-      end;
-   elseif (event == "VARIABLES_LOADED") then
-      BuffBlock_Init();
+   elseif (event == "ADDON_LOADED") then
+		BuffBlock_Init();
    end;
 end;
 

@@ -4,7 +4,7 @@
 	<Frame name="BuffBlockFrame" hidden="true">
 		<Scripts>
 			<OnLoad>
-				BuffBlock_OnLoad();
+				BuffBlock_OnLoad(event);
 			</OnLoad>
 			<OnEvent>
 				BuffBlock_OnEvent();
