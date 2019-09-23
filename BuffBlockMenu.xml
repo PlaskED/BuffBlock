@@ -1,5 +1,16 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
+	<Script file="BuffBlock.lua"/>
+	<Frame name="BuffBlockFrame" hidden="true">
+		<Scripts>
+			<OnLoad>
+				BuffBlock_OnLoad();
+			</OnLoad>
+			<OnEvent>
+				BuffBlock_OnEvent(event, ...);
+			</OnEvent>
+		</Scripts>
+	</Frame>
 	<CheckButton name="BuffBlockCheckboxTemplate" hidden="false" virtual="true">
 		<Size>
 			<AbsDimension x="32" y="32"/>
@@ -86,10 +97,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("BattleShout");
+						BuffBlock_GetOption(self, "BattleShout");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("BattleShout");
+						BuffBlock_SetOption(self, "BattleShout");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -103,10 +114,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("BlessingOfSalvation");
+						BuffBlock_GetOption(self, "BlessingOfSalvation");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("BlessingOfSalvation");
+						BuffBlock_SetOption(self, "BlessingOfSalvation");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -120,10 +131,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("GreaterBlessingOfSalvation");
+						BuffBlock_GetOption(self, "GreaterBlessingOfSalvation");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("GreaterBlessingOfSalvation");
+						BuffBlock_SetOption(self, "GreaterBlessingOfSalvation");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -137,10 +148,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("BlessingOfLight");
+						BuffBlock_GetOption(self, "BlessingOfLight");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("BlessingOfLight");
+						BuffBlock_SetOption(self, "BlessingOfLight");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -154,10 +165,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("GreaterBlessingOfLight");
+						BuffBlock_GetOption(self, "GreaterBlessingOfLight");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("GreaterBlessingOfLight");
+						BuffBlock_SetOption(self, "GreaterBlessingOfLight");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -171,10 +182,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("BlessingOfSanctuary");
+						BuffBlock_GetOption(self, "BlessingOfSanctuary");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("BlessingOfSanctuary");
+						BuffBlock_SetOption(self, "BlessingOfSanctuary");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -188,10 +199,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("GreaterBlessingOfSanctuary");
+						BuffBlock_GetOption(self, "GreaterBlessingOfSanctuary");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("GreaterBlessingOfSanctuary");
+						BuffBlock_SetOption(self, "GreaterBlessingOfSanctuary");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -205,10 +216,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("BlessingOfMight");
+						BuffBlock_GetOption(self, "BlessingOfMight");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("BlessingOfMight");
+						BuffBlock_SetOption(self, "BlessingOfMight");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -222,10 +233,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("GreaterBlessingOfMight");
+						BuffBlock_GetOption(self, "GreaterBlessingOfMight");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("GreaterBlessingOfMight");
+						BuffBlock_SetOption(self, "GreaterBlessingOfMight");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -239,10 +250,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("Thorns");
+						BuffBlock_GetOption(self, "Thorns");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("Thorns");
+						BuffBlock_SetOption(self, "Thorns");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -256,10 +267,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("Bloodthirst");
+						BuffBlock_GetOption(self, "Bloodthirst");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("Bloodthirst");
+						BuffBlock_SetOption(self, "Bloodthirst");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -273,10 +284,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("DivineSpirit");
+						BuffBlock_GetOption(self, "DivineSpirit");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("DivineSpirit");
+						BuffBlock_SetOption(self, "DivineSpirit");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -290,10 +301,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("PrayerOfSpirit");
+						BuffBlock_GetOption(self, "PrayerOfSpirit");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("PrayerOfSpirit");
+						BuffBlock_SetOption(self, "PrayerOfSpirit");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -307,10 +318,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("ArcaneIntellect");
+						BuffBlock_GetOption(self, "ArcaneIntellect");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("ArcaneIntellect");
+						BuffBlock_SetOption(self, "ArcaneIntellect");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -324,10 +335,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("ArcaneBrilliance");
+						BuffBlock_GetOption(self, "ArcaneBrilliance");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("ArcaneBrilliance");
+						BuffBlock_SetOption(self, "ArcaneBrilliance");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -341,10 +352,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("BlessingOfProtection");
+						BuffBlock_GetOption(self, "BlessingOfProtection");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("BlessingOfProtection");
+						BuffBlock_SetOption(self, "BlessingOfProtection");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -358,10 +369,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("AbolishPoison");
+						BuffBlock_GetOption(self, "AbolishPoison");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("AbolishPoison");
+						BuffBlock_SetOption(self, "AbolishPoison");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -375,10 +386,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("AbolishDisease");
+						BuffBlock_GetOption(self, "AbolishDisease");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("AbolishDisease");
+						BuffBlock_SetOption(self, "AbolishDisease");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -392,10 +403,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("Renew");
+						BuffBlock_GetOption(self, "Renew");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("Renew");
+						BuffBlock_SetOption(self, "Renew");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -409,10 +420,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("Rejuvenation");
+						BuffBlock_GetOption(self, "Rejuvenation");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("Rejuvenation");
+						BuffBlock_SetOption(self, "Rejuvenation");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -426,10 +437,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("Regrowth");
+						BuffBlock_GetOption(self, "Regrowth");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("Regrowth");
+						BuffBlock_SetOption(self, "Regrowth");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -443,10 +454,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("Inspiration");
+						BuffBlock_GetOption(self, "Inspiration");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("Inspiration");
+						BuffBlock_SetOption(self, "Inspiration");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -460,10 +471,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption("DivineIntervention");
+						BuffBlock_GetOption(self, "DivineIntervention");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption("DivineIntervention");
+						BuffBlock_SetOption(self, "DivineIntervention");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -477,7 +488,7 @@
 				</Anchors>
 				<Scripts>
 					<OnClick>
-						this:GetParent():Hide();
+						self:GetParent():Hide();
 					</OnClick>
 				</Scripts>
 			</Button>

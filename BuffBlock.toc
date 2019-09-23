@@ -4,5 +4,5 @@
 ## Author: Plask
 ## SavedVariables: BUFF_CONFIG
 ## Notes: Automatically removes selected buffs
-BuffBlock.xml
 BuffBlockMenu.xml
+BuffBlock.lua

@@ -1,6 +1,5 @@
 local BB_PlayerName = nil;
 local BB_default = {};
-local BuffBlockMenuObjects = {};
 local BuffBlockMenuStrings = {
    ["BattleShout"] = "Battle Shout",
    ["BlessingOfSalvation"] = "Blessing of Salvation",
@@ -28,15 +27,17 @@ local BuffBlockMenuStrings = {
 }
 
 function BuffBlock_OnLoad()
-   this:RegisterUnitEvent("UNIT_AURA", "player");
-   this:RegisterEvent("ADDON_LOADED", "BuffBlock);
+   BuffBlockFrame:RegisterUnitEvent("UNIT_AURA", "player");
+   BuffBlockFrame:RegisterEvent("ADDON_LOADED");
    DEFAULT_CHAT_FRAME:AddMessage("Buff Block. /BB for options", 1, 1, 0.5);
    SLASH_BB1 = "/BB";
    SlashCmdList["BB"] = BuffBlock_Command;
 end;
 
 function BuffBlock_Init()
-   BB_PlayerName = UnitName("player").." of "..GetCVar("realmName");
+	local name,_ = UnitName("player");
+	local realm = GetRealmName();
+    BB_PlayerName = name.." of "..realm;
    
    if (BUFF_CONFIG == nil) then
       BUFF_CONFIG = {};
@@ -45,13 +46,23 @@ function BuffBlock_Init()
    if (BUFF_CONFIG[BB_PlayerName] == nil) then
       BUFF_CONFIG[BB_PlayerName] = BB_default;
    end;
+   
+   print("LOADED config:");
+  for k,v in pairs(BUFF_CONFIG[BB_PlayerName]) do
+		print(k,v);
+   end;
+
+   print("LOADING DONE");
 end;
 
-function BuffBlock_OnEvent(event)
+function BuffBlock_OnEvent(event, ...)
    if (event == "UNIT_AURA") then
 		Kill_Buffs();
    elseif (event == "ADDON_LOADED") then
-		BuffBlock_Init();
+		local addonName = ...;
+		if (addonName == "BuffBlock") then
+			BuffBlock_Init();
+		end;
    end;
 end;
 
@@ -63,26 +74,25 @@ function BuffBlock_Command()
    end;
 end;
 
-function BuffBlock_GetOption(buffName)
-   local labelString = getglobal(this:GetName().."Text");
-   local label = BuffBlockMenuStrings[buffName] or "";
-   BuffBlockMenuObjects[buffName] = this;
-
-   if BUFF_CONFIG[BB_PlayerName].buffName or nil then
-      this:SetChecked(true);
+function BuffBlock_GetOption(self, buffName)
+   local labelString = getglobal(self:GetName().."Text");
+   local label = BuffBlockMenuStrings[buffName] or "ERROR";
+   
+   if BUFF_CONFIG[BB_PlayerName][buffName] or nil then
+      self:SetChecked(true);
    else
-      this:SetChecked(nil);
+      self:SetChecked(nil);
    end;
    labelString:SetText(label);
 end;
 
-function BuffBlock_SetOption(buffName)
-   local checked = this:GetChecked();
+function BuffBlock_SetOption(self, buffName)
+   local checked = self:GetChecked();
    if checked then
-      BUFF_CONFIG[BB_PlayerName].buffName = true;
+	  BUFF_CONFIG[BB_PlayerName][buffName] = true;
       DEFAULT_CHAT_FRAME:AddMessage("Blocking "..BuffBlockMenuStrings[buffName]);
    else
-      BUFF_CONFIG[BB_PlayerName].buffName = nil;
+      BUFF_CONFIG[BB_PlayerName][buffName] = nil;
       DEFAULT_CHAT_FRAME:AddMessage("Stopped blocking "..BuffBlockMenuStrings[buffName]);
    end;
 end;
@@ -116,8 +126,8 @@ function Kill_Buffs()
       --DEFAULT_CHAT_FRAME:AddMessage("DEBUG: "..texture, 1, 1, 0.5);
 
       --if BUFF_CONFIG[BB_PlayerName].buffName ~= nil then
-      if BUFF_CONFIG[BB_PlayerName].buffName then
-	 if (buffName ~= "GreaterBlessingOfSalvation" or buffName ~= "BlessingOfSalvation") then
+      if BUFF_CONFIG[BB_PlayerName][buffName] then
+		if (buffName ~= "GreaterBlessingOfSalvation" or buffName ~= "BlessingOfSalvation") then
 	    if (IsShieldEquipped() and GetShapeshiftFormInfo(2)) then
 	       KillBuff(buffName);
 	    end;
