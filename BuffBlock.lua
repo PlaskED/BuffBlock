@@ -46,13 +46,6 @@ function BuffBlock_Init()
    if (BUFF_CONFIG[BB_PlayerName] == nil) then
       BUFF_CONFIG[BB_PlayerName] = BB_default;
    end;
-   
-   print("LOADED config:");
-  for k,v in pairs(BUFF_CONFIG[BB_PlayerName]) do
-		print(k,v);
-   end;
-
-   print("LOADING DONE");
 end;
 
 function BuffBlock_OnEvent(event, ...)
@@ -122,18 +115,15 @@ function Kill_Buffs()
    local buff = UnitBuff("player", i, "CANCELABLE");
    while buff do
       local buffName = select(1, buff);
-      
-      --DEFAULT_CHAT_FRAME:AddMessage("DEBUG: "..texture, 1, 1, 0.5);
 
-      --if BUFF_CONFIG[BB_PlayerName].buffName ~= nil then
       if BUFF_CONFIG[BB_PlayerName][buffName] then
 		if (buffName ~= "GreaterBlessingOfSalvation" or buffName ~= "BlessingOfSalvation") then
-	    if (IsShieldEquipped() and GetShapeshiftFormInfo(2)) then
-	       KillBuff(buffName);
-	    end;
-	 else
-	    KillBuff(buffName);
-	 end;
+			if (IsShieldEquipped() and GetShapeshiftFormInfo(2)) then
+				KillBuff(buffName);
+			end;
+		else
+			KillBuff(buffName);
+		end;
       end;
       i = i + 1;
       buff = UnitBuff("player", i, "CANCELABLE");

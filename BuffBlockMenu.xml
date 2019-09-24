@@ -38,7 +38,7 @@
 	<Frame name="BuffBlockOptions" toplevel="true" movable="true" parent="UIParent" enableMouse="true" hidden="true">
 		<TitleRegion setAllPoints="true"/>
 		<Size>
-			<AbsDimension x="225" y="295" />
+			<AbsDimension x="600" y="340" />
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER" />
@@ -242,9 +242,9 @@
 			</CheckButton>
 			<CheckButton name="ThornsCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="GreaterMightCheckbox">
+					<Anchor point="Right" relativeTo="BattleShoutCheckbox">
 						<Offset>
-							<AbsDimension x="0" y="-25" />
+							<AbsDimension x="200" y="0" />
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -395,9 +395,9 @@
 			</CheckButton>
 			<CheckButton name="RenewCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="AbolishDiseaseCheckbox">
+					<Anchor point="RIGHT" relativeTo="ThornsCheckbox">
 						<Offset>
-							<AbsDimension x="0" y="-25" />
+							<AbsDimension x="200" y="0" />
 						</Offset>
 					</Anchor>
 				</Anchors>
