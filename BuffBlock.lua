@@ -91,22 +91,24 @@ function BuffBlock_SetOption(self, buffName)
 end;
 
 function IsShieldEquipped()
-   local slot = GetInventorySlotInfo("SecondaryHandSlot")
-   local link = GetInventoryItemLink("player", slot)
+   local slot = GetInventorySlotInfo("SecondaryHandSlot");
+   local link = GetInventoryItemLink("player", slot);
    if link then
-      local found, _, id, name = string.find(link, "item:(%d+):.*%[(.*)%]")
+      local found, _, id, name = string.find(link, "item:(%d+):.*%[(.*)%]");
       if found then
-	 local _,_,_,_,_,itemType = GetItemInfo(tonumber(id))
-	 if(itemType == "Shields") then
-	    return true
-	 end
-      end
-   end
-   return false
+		local _,_,_,_,_,_,itemType = GetItemInfo(tonumber(id));
+		 if(itemType == "Shields") then
+			return true;
+		 end;
+      end;
+   end;
+   return false;
 end
 
-function KillBuff(buffName)
-   CancelPlayerBuff("player", buffName);
+function KillBuff(i, buffName)
+   --local buffIndex, untilCancelled = GetPlayerBuff(i, "CANCELABLE");
+   --print(buffIndex);
+   CancelPlayerBuff(buffName);
    DEFAULT_CHAT_FRAME:AddMessage("Blocked "..BuffBlockMenuStrings[buffName], 1, 1, 0.5);
 end;
 
@@ -115,14 +117,16 @@ function Kill_Buffs()
    local buff = UnitBuff("player", i, "CANCELABLE");
    while buff do
       local buffName = select(1, buff);
-
-      if BUFF_CONFIG[BB_PlayerName][buffName] then
+	  print("buffName: "..buffName);
+	  KillBuff(i, buffName);
+      if BUFF_CONFIG[BB_PlayerName].buffName then
 		if (buffName ~= "GreaterBlessingOfSalvation" or buffName ~= "BlessingOfSalvation") then
-			if (IsShieldEquipped() and GetShapeshiftFormInfo(2)) then
-				KillBuff(buffName);
+			local _, active, _, _, _ = GetShapeshiftFormInfo(2);
+			if (IsShieldEquipped() and active) then
+				KillBuff(i, buffName);
 			end;
 		else
-			KillBuff(buffName);
+			KillBuff(i, buffName);
 		end;
       end;
       i = i + 1;
