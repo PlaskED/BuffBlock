@@ -492,6 +492,20 @@
 					</OnClick>
 				</Scripts>
 			</Button>
+			<Button name="BuffBlockClose" inherits="GameMenuButtonTemplate" text="Get Macro">
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="BuffBlockClose">
+						<Offset>
+							<AbsDimension x="100" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						PickupBuffBlockMacro();
+					</OnClick>
+				</Scripts>
+			</Button>
 		</Frames>
 	</Frame>
 </Ui>

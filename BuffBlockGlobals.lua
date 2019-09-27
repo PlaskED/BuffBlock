@@ -1,0 +1,31 @@
+BB_Globals = {}
+local BB = BB_Globals
+
+BB.BuffBlockMacroName = "BuffBlock";
+BB.BuffBlockIconName = "INV_MISC_QUESTIONMARK";
+BB.BB_default = {};
+BB.BuffBlockMenuStrings = {
+   BattleShout = "Battle Shout",
+   BlessingOfSalvation = "Blessing of Salvation",
+   GreaterBlessingOfSalvation = "Greater Blessing of Salvation",
+   BlessingOfLight = "Blessing of Light",
+   GreaterBlessingOfLight = "Greater Blessing of Light",
+   BlessingOfSanctuary = "Blessing of Sanctuary",
+   GreaterBlessingOfSanctuary = "Greater Blessing of Sanctuary",
+   BlessingOfMight = "Blessing of Might",
+   GreaterBlessingOfMight = "Greater Blessing of Might",
+   Thorns = "Thorns",
+   Bloodthirst = "Bloodthirst",
+   DivineSpirit = "Divine Spirit",
+   PrayerOfSpirit = "Prayer of Spirit",
+   ArcaneIntellect = "Arcane Intellect",
+   ArcaneBrilliance = "Arcane Brilliance",
+   BlessingOfProtection = "Blessing of Protection",
+   AbolishPoison = "Abolish Poison",
+   AbolishDisease = "Abolish Disease",
+   Renew = "Renew",
+   Rejuvenation = "Rejuvenation",
+   Regrowth = "Regrowth",
+   Inspiration = "Inspiration",
+   DivineIntervention = "Divine Intervention",
+}
