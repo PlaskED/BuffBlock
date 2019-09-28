@@ -481,9 +481,9 @@
 			</CheckButton>
 			<Button name="BuffBlockClose" inherits="GameMenuButtonTemplate" text="Close">
 				<Anchors>
-					<Anchor point="CENTER" relativePoint="BOTTOM" relativeTo="BuffBlockOptions">
+					<Anchor point="LEFT" relativePoint="BOTTOM" relativeTo="BuffBlockOptions">
 						<Offset>
-							<AbsDimension x="0" y="30" />
+							<AbsDimension x="-175" y="30" />
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -493,11 +493,11 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="BuffBlockClose" inherits="GameMenuButtonTemplate" text="Get Macro">
+			<Button name="BuffBlockGetMacro" inherits="GameMenuButtonTemplate" text="Get Macro">
 				<Anchors>
 					<Anchor point="RIGHT" relativeTo="BuffBlockClose">
 						<Offset>
-							<AbsDimension x="100" y="0" />
+							<AbsDimension x="200" y="0" />
 						</Offset>
 					</Anchor>
 				</Anchors>
