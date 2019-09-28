@@ -1,6 +1,6 @@
 ## Interface: 11302
 ## Title: BuffBlock
-## Version: 1.4
+## Version: 1.5
 ## Author: Plask
 ## SavedVariables: BUFF_CONFIG
 ## Notes: Automatically removes selected buffs

@@ -61,6 +61,7 @@ end;
 
 function BuffBlock_SetOption(self, buffName)
    local checked = self:GetChecked();
+	buffName = buffName:gsub("%s", "");
    if checked then
 	  BUFF_CONFIG[BB_PlayerName][buffName] = true;
       DEFAULT_CHAT_FRAME:AddMessage("Blocking "..BB.BuffBlockMenuStrings[buffName], 1, 0.75, 0.75);
@@ -86,6 +87,7 @@ function IsShieldEquipped()
 end
 
 function KillBuff(i, buffName)
+	buffName = buffName:gsub("%s", "");
 	if InCombatLockdown() then
 		 DEFAULT_CHAT_FRAME:AddMessage("You must remove "..BB.BuffBlockMenuStrings[buffName], 1, 0.5, 0.5);
 	else
@@ -124,10 +126,10 @@ function UpdateBuffBlockMacro()
 	end;
 	
 	local newMacroBody = "";
-	for k,v in BUFF_CONFIG[BB_PlayerName] do
+	for k,v in pairs(BUFF_CONFIG[BB_PlayerName]) do
 		if v then
 			if (string.len(newMacroBody) > 0) then
-				newMacroBody = newMacroBody.."\n/cancelaura"..BB.BuffBlockMenuStrings[k];
+				newMacroBody = newMacroBody.."\n/cancelaura "..BB.BuffBlockMenuStrings[k];
 			else
 				newMacroBody = "/cancelaura "..BB.BuffBlockMenuStrings[k];
 			end;
@@ -135,14 +137,12 @@ function UpdateBuffBlockMacro()
 	end;
 	
 	local macroId = 0;
-	if GetMacroIndexByName(BuffBlockMacroName) == 0 then
+	if GetMacroIndexByName(BB.BuffBlockMacroName) == 0 then
 		--Macro does not exist, create it
-		macroId = CreateMacro(BuffBlockMacroName, BuffBlockIconName, newMacroBody, 1);
-		print("Created macro at index: "..tostring(macroId));
+		macroId = CreateMacro(BB.BuffBlockMacroName, BB.BuffBlockIconName, newMacroBody, 1);
 	else
 		--Update existing macro
-		macroId = EditMacro(BuffBlockMacroName, nil, nil, newMacroBody, 1, 1);
-		print("Updated macro at index: "..tostring(macroId));
+		macroId = EditMacro(BB.BuffBlockMacroName, nil, nil, newMacroBody, 1, 1);
 	end;
 	
 	return macroId;
@@ -150,8 +150,9 @@ end;
 
 -- Places the BuffBlock macro at the cursor
 function PickupBuffBlockMacro()
-	if InCombatLockdown() then
-		PickupMacro(BuffBlockMacroName);
+	if not InCombatLockdown() then
+		UpdateBuffBlockMacro()
+		PickupMacro(BB.BuffBlockMacroName);
 	end;
 end;
 	

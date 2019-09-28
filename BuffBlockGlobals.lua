@@ -28,4 +28,4 @@ BB.BuffBlockMenuStrings = {
    Regrowth = "Regrowth",
    Inspiration = "Inspiration",
    DivineIntervention = "Divine Intervention",
-}
+};
