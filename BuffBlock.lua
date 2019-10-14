@@ -5,7 +5,7 @@ function BuffBlock_OnLoad()
     BuffBlockFrame:RegisterEvent("ADDON_LOADED");
    BuffBlockFrame:RegisterUnitEvent("UNIT_AURA", "player");
    BuffBlockFrame:RegisterEvent("PLAYER_REGEN_ENABLED");
-   DEFAULT_CHAT_FRAME:AddMessage("Buff Block. /BB for options", 1, 0.75, 0.75);
+   DEFAULT_CHAT_FRAME:AddMessage("Buff Block. /BB for options", 0.35, 0.75, 0.75);
    SLASH_BB1 = "/BB";
    SlashCmdList["BB"] = BuffBlock_Command;
 end;
@@ -64,10 +64,10 @@ function BuffBlock_SetOption(self, buffName)
 	buffName = buffName:gsub("%s", "");
    if checked then
 	  BUFF_CONFIG[BB_PlayerName][buffName] = true;
-      DEFAULT_CHAT_FRAME:AddMessage("Blocking "..BB.BuffBlockMenuStrings[buffName], 1, 0.75, 0.75);
+      DEFAULT_CHAT_FRAME:AddMessage("Blocking "..BB.BuffBlockMenuStrings[buffName], 0.35, 0.75, 0.75);
    else
       BUFF_CONFIG[BB_PlayerName][buffName] = nil;
-      DEFAULT_CHAT_FRAME:AddMessage("Stopped blocking "..BB.BuffBlockMenuStrings[buffName], 1, 0.75, 0.75);
+      DEFAULT_CHAT_FRAME:AddMessage("Stopped blocking "..BB.BuffBlockMenuStrings[buffName], 0.35, 0.75, 0.75);
    end;
 end;
 
@@ -89,10 +89,10 @@ end
 function KillBuff(i, buffName)
 	buffName = buffName:gsub("%s", "");
 	if InCombatLockdown() then
-		 DEFAULT_CHAT_FRAME:AddMessage("You must remove "..BB.BuffBlockMenuStrings[buffName], 1, 0.5, 0.5);
+		 DEFAULT_CHAT_FRAME:AddMessage("You must remove "..BB.BuffBlockMenuStrings[buffName], 1, 0.25, 0.25);
 	else
-		CancelUnitBuff("player", i-1);
-		DEFAULT_CHAT_FRAME:AddMessage("Blocked "..BB.BuffBlockMenuStrings[buffName], 1, 0.75, 0.5);
+		CancelUnitBuff("player", i);
+		DEFAULT_CHAT_FRAME:AddMessage("Blocked "..BB.BuffBlockMenuStrings[buffName], 0.75, 0.25, 0.25);
 	end;
 end;
 
