@@ -105,7 +105,7 @@ function KillBuffs()
       if BUFF_CONFIG[BB_PlayerName][buffKey] then
 		if (buffKey == "GreaterBlessingOfSalvation" or buffKey == "BlessingOfSalvation") then
 			local _, active, _, _, _ = GetShapeshiftFormInfo(2);
-			if not (IsShieldEquipped() and active) then
+			if (IsShieldEquipped() and active) then
 				KillBuff(i, buffName);
 			end;
 		else
