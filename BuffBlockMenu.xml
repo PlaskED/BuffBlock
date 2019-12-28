@@ -17,7 +17,7 @@
 			<AbsDimension x="32" y="32"/>
 		</Size>
 		<Layers>
-			<Layer level="ARTWORK">relativeTo="BuffBlockOptions"
+			<Layer level="ARTWORK">
 				<FontString name="$parentText" inherits="GameFontNormalSmall" text="">
 					<Anchors>
 						<Anchor point="LEFT" relativePoint="RIGHT">
@@ -39,7 +39,7 @@
 	<Frame name="BuffBlockOptions" toplevel="true" movable="true" parent="UIParent" enableMouse="true" hidden="true">
 		<TitleRegion setAllPoints="true"/>
 		<Size>
-			<AbsDimension x="600" y="340" />
+			<AbsDimension x="600" y="550" />
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER" />
@@ -83,7 +83,7 @@
 							</Offset>
 						</Anchor>
 					</Anchors>
-				</FontString>				
+				</FontString>
 			</Layer>
 		</Layers>
 		
@@ -98,10 +98,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "BattleShout");
+						BuffBlock_GetBuffOption(self, "BattleShout");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "BattleShout");
+						BuffBlock_SetBuffOption(self, "BattleShout");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -115,10 +115,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "BlessingOfSalvation");
+						BuffBlock_GetBuffOption(self, "BlessingOfSalvation");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "BlessingOfSalvation");
+						BuffBlock_SetBuffOption(self, "BlessingOfSalvation");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -132,10 +132,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "GreaterBlessingOfSalvation");
+						BuffBlock_GetBuffOption(self, "GreaterBlessingOfSalvation");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "GreaterBlessingOfSalvation");
+						BuffBlock_SetBuffOption(self, "GreaterBlessingOfSalvation");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -149,10 +149,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "BlessingOfLight");
+						BuffBlock_GetBuffOption(self, "BlessingOfLight");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "BlessingOfLight");
+						BuffBlock_SetBuffOption(self, "BlessingOfLight");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -166,10 +166,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "GreaterBlessingOfLight");
+						BuffBlock_GetBuffOption(self, "GreaterBlessingOfLight");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "GreaterBlessingOfLight");
+						BuffBlock_SetBuffOption(self, "GreaterBlessingOfLight");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -183,10 +183,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "BlessingOfSanctuary");
+						BuffBlock_GetBuffOption(self, "BlessingOfSanctuary");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "BlessingOfSanctuary");
+						BuffBlock_SetBuffOption(self, "BlessingOfSanctuary");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -200,10 +200,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "GreaterBlessingOfSanctuary");
+						BuffBlock_GetBuffOption(self, "GreaterBlessingOfSanctuary");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "GreaterBlessingOfSanctuary");
+						BuffBlock_SetBuffOption(self, "GreaterBlessingOfSanctuary");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -217,10 +217,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "BlessingOfMight");
+						BuffBlock_GetBuffOption(self, "BlessingOfMight");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "BlessingOfMight");
+						BuffBlock_SetBuffOption(self, "BlessingOfMight");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -234,10 +234,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "GreaterBlessingOfMight");
+						BuffBlock_GetBuffOption(self, "GreaterBlessingOfMight");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "GreaterBlessingOfMight");
+						BuffBlock_SetBuffOption(self, "GreaterBlessingOfMight");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -251,10 +251,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "Thorns");
+						BuffBlock_GetBuffOption(self, "Thorns");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "Thorns");
+						BuffBlock_SetBuffOption(self, "Thorns");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -268,10 +268,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "Bloodthirst");
+						BuffBlock_GetBuffOption(self, "Bloodthirst");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "Bloodthirst");
+						BuffBlock_SetBuffOption(self, "Bloodthirst");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -285,10 +285,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "DivineSpirit");
+						BuffBlock_GetBuffOption(self, "DivineSpirit");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "DivineSpirit");
+						BuffBlock_SetBuffOption(self, "DivineSpirit");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -302,10 +302,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "PrayerOfSpirit");
+						BuffBlock_GetBuffOption(self, "PrayerOfSpirit");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "PrayerOfSpirit");
+						BuffBlock_SetBuffOption(self, "PrayerOfSpirit");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -319,10 +319,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "ArcaneIntellect");
+						BuffBlock_GetBuffOption(self, "ArcaneIntellect");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "ArcaneIntellect");
+						BuffBlock_SetBuffOption(self, "ArcaneIntellect");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -336,10 +336,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "ArcaneBrilliance");
+						BuffBlock_GetBuffOption(self, "ArcaneBrilliance");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "ArcaneBrilliance");
+						BuffBlock_SetBuffOption(self, "ArcaneBrilliance");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -353,10 +353,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "BlessingOfProtection");
+						BuffBlock_GetBuffOption(self, "BlessingOfProtection");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "BlessingOfProtection");
+						BuffBlock_SetBuffOption(self, "BlessingOfProtection");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -370,10 +370,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "AbolishPoison");
+						BuffBlock_GetBuffOption(self, "AbolishPoison");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "AbolishPoison");
+						BuffBlock_SetBuffOption(self, "AbolishPoison");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -387,10 +387,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "AbolishDisease");
+						BuffBlock_GetBuffOption(self, "AbolishDisease");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "AbolishDisease");
+						BuffBlock_SetBuffOption(self, "AbolishDisease");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -404,10 +404,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "Renew");
+						BuffBlock_GetBuffOption(self, "Renew");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "Renew");
+						BuffBlock_SetBuffOption(self, "Renew");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -421,10 +421,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "Rejuvenation");
+						BuffBlock_GetBuffOption(self, "Rejuvenation");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "Rejuvenation");
+						BuffBlock_SetBuffOption(self, "Rejuvenation");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -438,10 +438,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "Regrowth");
+						BuffBlock_GetBuffOption(self, "Regrowth");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "Regrowth");
+						BuffBlock_SetBuffOption(self, "Regrowth");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -455,10 +455,10 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "Inspiration");
+						BuffBlock_GetBuffOption(self, "Inspiration");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "Inspiration");
+						BuffBlock_SetBuffOption(self, "Inspiration");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -472,19 +472,150 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						BuffBlock_GetOption(self, "DivineIntervention");
+						BuffBlock_GetBuffOption(self, "DivineIntervention");
 					</OnShow>
 					<OnClick>
-						BuffBlock_SetOption(self, "DivineIntervention");
+						BuffBlock_SetBuffOption(self, "DivineIntervention");
 					</OnClick>
 				</Scripts>
 			</CheckButton>
-			<Button name="BuffBlockClose" inherits="GameMenuButtonTemplate" text="Close">
+			
+			<!-- Macro Name Field -->
+			<EditBox letters="80" autoFocus="false" name="MacroNameEditBox">
+				<Size x="130" y="32" />
 				<Anchors>
-					<Anchor point="LEFT" relativePoint="BOTTOM" relativeTo="BuffBlockOptions">
-						<Offset>
-							<AbsDimension x="-175" y="30" />
-						</Offset>
+					<Anchor point="BOTTOM" relativeTo="GreaterMightCheckbox">
+						<Offset x="50" y="-50" />
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+							<Size x="130" y="32" />
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset x="-10" y="0" />
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.2" top="0" bottom="1.0"/>
+						</Texture>
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+							<Size x="130" y="32" />
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset x="10" y="0" />
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.7" right="1.0" top="0" bottom="1.0"/>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontNormalSmall" text="Macro Name">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" y="8"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetMacroName(self);
+					</OnShow>
+				</Scripts>
+				<FontString inherits="ChatFontNormal"/>
+			</EditBox>
+			
+			<!-- Macro Body Scroll Frame -->
+			<ScrollFrame name="MacroBodyScrollFrame">
+				<Size x="350" y="100"/>
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="MacroNameEditBox">
+						<Offset x="390" y="-50" />
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture setAllPoints="true">
+						<Color r="0.05" g="0.05" b="0.05" a="0.75"/>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontNormalSmall" text="Prepend Macro Body">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" y="12"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Slider name="MacroBodyScrollFrame_HSlider" orientation="HORIZONTAL"
+						minValue="0" maxValue="100" defaultValue="0" valueStep="1">
+						<Size x="350" y="25"/>
+						<Anchors>
+							<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="MacroBodyScrollFrame"/>
+						</Anchors>
+						<Scripts>
+							<OnValueChanged>
+								MacroBodyScrollFrame:SetHorizontalScroll(-1 * self:GetValue())
+							</OnValueChanged>
+						</Scripts>
+						<ThumbTexture name="$parentThumbTexture" file="Interface\Buttons\UI-ScrollBar-Knob">
+							<Size x="25" y="25"/>
+						</ThumbTexture>
+					</Slider>
+						
+					<Slider name="MacroBodyScrollFrame_VSlider" orientation="VERTICAL"
+						minValue="0" maxValue="100" defaultValue="0" valueStep="1">
+						<Size x="25" y="100"/>
+						<Anchors>
+							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="MacroBodyScrollFrame"/>
+						</Anchors>
+						<Scripts>
+							<OnValueChanged>
+								MacroBodyScrollFrame:SetVerticalScroll(self:GetValue())
+							</OnValueChanged>
+						</Scripts>
+						<ThumbTexture name="$parentThumbTexture" file="Interface\Buttons\UI-ScrollBar-Knob">
+							<Size x="25" y="25"/>
+						</ThumbTexture>
+					</Slider>
+				</Frames>
+				<ScrollChild>
+					<Frame>
+						<Size x="350" y="100"/>
+						<EditBox letters="255" autoFocus="false" multiLine="true" name="MacroBodyEditBox">
+							<FontString inherits="ChatFontNormal"/>
+						</EditBox>
+				
+						<!--
+						<Layers>
+							<Layer level="ARTWORK">
+								<Texture file="Interface\Icons\Spell_Shadow_DemonicFortitude">
+								<Size x="100" y="100"/>
+								<Anchors>
+									<Anchor point="CENTER"/>
+								</Anchors>
+								</Texture>
+							</Layer>
+						</Layers>
+						-->
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+			
+			<!-- Close Button -->
+			<Button name="BuffBlockClose" inherits="GameMenuButtonTemplate" text="Exit">
+				<Anchors>
+					<Anchor point="BOTTOM" relativeTo="MacroBodyScrollFrame">
+						<Offset x="-270" y="-60" />
 					</Anchor>
 				</Anchors>
 				<Scripts>
@@ -493,9 +624,28 @@
 					</OnClick>
 				</Scripts>
 			</Button>
+			
+			<!-- Save & Close Button -->
+			<Button name="BuffBlockSaveClose" inherits="GameMenuButtonTemplate" text="Save &amp; Exit">
+				<Anchors>	
+					<Anchor point="RIGHT" relativeTo="BuffBlockClose">
+						<Offset>
+							<AbsDimension x="200" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						BuffBlock_SaveSettings();
+						self:GetParent():Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			<!-- Get Macro Button -->
 			<Button name="BuffBlockGetMacro" inherits="GameMenuButtonTemplate" text="Get Macro">
 				<Anchors>
-					<Anchor point="RIGHT" relativeTo="BuffBlockClose">
+					<Anchor point="RIGHT" relativeTo="BuffBlockSaveClose">
 						<Offset>
 							<AbsDimension x="200" y="0" />
 						</Offset>
@@ -507,6 +657,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
+			
 		</Frames>
 	</Frame>
 </Ui>

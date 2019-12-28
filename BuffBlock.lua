@@ -47,11 +47,23 @@ function BuffBlock_Command()
    end;
 end;
 
-function BuffBlock_GetOption(self, buffName)
+function BuffBlock_SaveSettings()
+	local macroName = getglobal("MacroNameEditBox"):GetText();
+	BUFF_CONFIG[BB_PlayerName].MacroName = macroName;
+	-- local macroBodyEditBox = getglobal("MacroBodyEditBox");
+end;
+
+function BuffBlock_GetMacroName(self)
+	local macroName = BUFF_CONFIG[BB_PlayerName].MacroName or "ERROR";
+	self:SetText(macroName);
+end;
+
+function BuffBlock_GetBuffOption(self, buffName)
    local labelString = getglobal(self:GetName().."Text");
-   local label = BB.BuffBlockMenuStrings[buffName] or "ERROR";
+   local buffKey = formatBuffName(buffName);
+   local label = BB.BuffBlockMenuStrings[buffKey] or "ERROR";
    
-   if BUFF_CONFIG[BB_PlayerName][buffName] or nil then
+   if BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] or nil then
       self:SetChecked(true);
    else
       self:SetChecked(nil);
@@ -59,40 +71,29 @@ function BuffBlock_GetOption(self, buffName)
    labelString:SetText(label);
 end;
 
-function BuffBlock_SetOption(self, buffName)
+function formatBuffName(buffName)
+	return buffName:gsub("%s", ""):lower();
+end;
+
+function BuffBlock_SetBuffOption(self, buffName)
    local checked = self:GetChecked();
-	buffName = buffName:gsub("%s", "");
+	buffKey = formatBuffName(buffName);
    if checked then
-	  BUFF_CONFIG[BB_PlayerName][buffName] = true;
-      DEFAULT_CHAT_FRAME:AddMessage("Blocking "..BB.BuffBlockMenuStrings[buffName], 0.35, 0.75, 0.75);
+	  BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] = true;
+      DEFAULT_CHAT_FRAME:AddMessage("Blocking "..BB.BuffBlockMenuStrings[buffKey], 0.35, 0.75, 0.75);
    else
-      BUFF_CONFIG[BB_PlayerName][buffName] = nil;
-      DEFAULT_CHAT_FRAME:AddMessage("Stopped blocking "..BB.BuffBlockMenuStrings[buffName], 0.35, 0.75, 0.75);
+      BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] = nil;
+      DEFAULT_CHAT_FRAME:AddMessage("Stopped blocking "..BB.BuffBlockMenuStrings[buffKey], 0.35, 0.75, 0.75);
    end;
 end;
 
-function IsShieldEquipped()
-   local slot = GetInventorySlotInfo("SecondaryHandSlot");
-   local link = GetInventoryItemLink("player", slot);
-   if link then
-      local found, _, id, name = string.find(link, "item:(%d+):.*%[(.*)%]");
-      if found then
-		local _,_,_,_,_,_,itemType = GetItemInfo(tonumber(id));
-		 if(itemType == "Shields") then
-			return true;
-		 end;
-      end;
-   end;
-   return false;
-end
-
 function KillBuff(i, buffName)
-	buffName = buffName:gsub("%s", "");
+	buffKey = formatBuffName(buffName);
 	if InCombatLockdown() then
-		 DEFAULT_CHAT_FRAME:AddMessage("You must remove "..BB.BuffBlockMenuStrings[buffName], 1, 0.25, 0.25);
+		 DEFAULT_CHAT_FRAME:AddMessage("You must remove "..BB.BuffBlockMenuStrings[buffKey], 1, 0.25, 0.25);
 	else
 		CancelUnitBuff("player", i);
-		DEFAULT_CHAT_FRAME:AddMessage("Blocked "..BB.BuffBlockMenuStrings[buffName], 0.75, 0.25, 0.25);
+		DEFAULT_CHAT_FRAME:AddMessage("Blocked "..BB.BuffBlockMenuStrings[buffKey], 0.75, 0.25, 0.25);
 	end;
 end;
 
@@ -101,11 +102,13 @@ function KillBuffs()
    local buff = UnitBuff("player", i, "HELPFUL");
    while buff do
       local buffName = select(1, buff);
-      local buffKey = buffName:gsub("%s+", "");
-      if BUFF_CONFIG[BB_PlayerName][buffKey] then
-		if (buffKey == "GreaterBlessingOfSalvation" or buffKey == "BlessingOfSalvation") then
+--	  print("buffName: ", buffName);
+      local buffKey = formatBuffName(buffName);
+--	  print("buffKey: ", buffKey);
+      if BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] then
+		if (buffKey == "greaterblessingofsalvation" or buffKey == "blessingofsalvation") then
 			local _, active, _, _, _ = GetShapeshiftFormInfo(2);
-			if (IsShieldEquipped() and active) then
+			if (active) then
 				KillBuff(i, buffName);
 			end;
 		else
@@ -126,7 +129,7 @@ function UpdateBuffBlockMacro()
 	end;
 	
 	local newMacroBody = "";
-	for k,v in pairs(BUFF_CONFIG[BB_PlayerName]) do
+	for k,v in pairs(BUFF_CONFIG[BB_PlayerName].Buffs) do
 		if v then
 			if (string.len(newMacroBody) > 0) then
 				newMacroBody = newMacroBody.."\n/cancelaura "..BB.BuffBlockMenuStrings[k];
@@ -137,12 +140,14 @@ function UpdateBuffBlockMacro()
 	end;
 	
 	local macroId = 0;
-	if GetMacroIndexByName(BB.BuffBlockMacroName) == 0 then
+	local macroName = BUFF_CONFIG[BB_PlayerName].MacroName;
+	local iconName = BUFF_CONFIG[BB_PlayerName].IconName;
+	if GetMacroIndexByName(macroName) == 0 then
 		--Macro does not exist, create it
-		macroId = CreateMacro(BB.BuffBlockMacroName, BB.BuffBlockIconName, newMacroBody, 1);
+		macroId = CreateMacro(macroName, iconName, newMacroBody, 1);
 	else
 		--Update existing macro
-		macroId = EditMacro(BB.BuffBlockMacroName, nil, nil, newMacroBody, 1, 1);
+		macroId = EditMacro(macroName, nil, nil, newMacroBody, 1, 1);
 	end;
 	
 	return macroId;
@@ -152,7 +157,7 @@ end;
 function PickupBuffBlockMacro()
 	if not InCombatLockdown() then
 		UpdateBuffBlockMacro()
-		PickupMacro(BB.BuffBlockMacroName);
+		PickupMacro(BUFF_CONFIG[BB_PlayerName].MacroName);
 	end;
 end;
 	
