@@ -3,7 +3,7 @@
 ## Version: 1.6
 ## Author: Plask
 ## SavedVariables: BUFF_CONFIG
-## Notes: Automatically removes selected buffs
+## Notes: The supreme buff manager
 BuffBlockGlobals.lua
 BuffBlock.lua
 BuffBlockMenu.xml

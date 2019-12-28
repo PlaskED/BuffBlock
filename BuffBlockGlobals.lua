@@ -3,9 +3,9 @@ local BB = BB_Globals
 
 BB.BB_default = {
 	["MacroName"] = "BuffBlock",
-	["IconName"] = "INV_MISC_QUESTIONMARK",
 	["Buffs"] = {}
 }
+BB.DEFAULT_ICON = "INV_MISC_QUESTIONMARK";
 BB.BuffBlockMenuStrings = {
    battleshout = "Battle Shout",
    blessingofsalvation = "Blessing of Salvation",

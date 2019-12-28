@@ -32,10 +32,10 @@ function BuffBlock_OnEvent(event, ...)
 		if (addonName == "BuffBlock") then
 			BuffBlock_Init();
 		end;
-	-- When leaving combat there might be pending blocks so update macro and kill buffs again.
+	-- When leaving combat there might be pending changes so run them
 	elseif (event == "PLAYER_REGEN_ENABLED") then
 		KillBuffs();
-		UpdateBuffBlockMacro();
+		BuffBlock_SaveSettings();
    end;
 end;
 
@@ -50,7 +50,8 @@ end;
 function BuffBlock_SaveSettings()
 	local macroName = getglobal("MacroNameEditBox"):GetText();
 	BUFF_CONFIG[BB_PlayerName].MacroName = macroName;
-	-- local macroBodyEditBox = getglobal("MacroBodyEditBox");
+	local prependMacroBody = getglobal("MacroBodyEditBox"):GetText();
+	UpdateBuffBlockMacro(prependMacroBody);
 end;
 
 function BuffBlock_GetMacroName(self)
@@ -58,12 +59,18 @@ function BuffBlock_GetMacroName(self)
 	self:SetText(macroName);
 end;
 
+function BuffBlock_GetMacroIcon(self)
+	local macroName = BUFF_CONFIG[BB_PlayerName].MacroName;
+	_, iconTexture, _, _ = GetMacroInfo(macroName);
+	if iconTexture then
+		-- Set icon texture some way
+	end
+end;
+
 function BuffBlock_GetMacroBody(self)
 	local macroName = BUFF_CONFIG[BB_PlayerName].MacroName;
-	local iconName = BUFF_CONFIG[BB_PlayerName].IconName;
-	_, iconTexture, macroBody, _ = GetMacroInfo(macroName);
+	_, _, macroBody, _ = GetMacroInfo(macroName);
 	if macroBody then
-		-- Set icon texture?
 		self:SetText(filterCancelAuraCommands(macroBody));
 	end
 end;
@@ -136,12 +143,12 @@ end;
 -- Updates the BuffBlock macro according to the current config settings
 -- If the macro does not exist, it is created.
 -- Note: If outside of combat, it will not update/create macro
-function UpdateBuffBlockMacro()
+function UpdateBuffBlockMacro(prependMacroBody)
 	if InCombatLockdown() then
 		return 0;
 	end;
 	
-	local newMacroBody = "";
+	local newMacroBody = prependMacroBody;
 	for k,v in pairs(BUFF_CONFIG[BB_PlayerName].Buffs) do
 		if v then
 			if (string.len(newMacroBody) > 0) then
@@ -169,7 +176,7 @@ end;
 -- Places the BuffBlock macro at the cursor
 function PickupBuffBlockMacro()
 	if not InCombatLockdown() then
-		UpdateBuffBlockMacro()
+		BuffBlock_SaveSettings();
 		PickupMacro(BUFF_CONFIG[BB_PlayerName].MacroName);
 	end;
 end;
