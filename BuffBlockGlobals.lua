@@ -30,4 +30,11 @@ BB.BuffBlockMenuStrings = {
    regrowth = "Regrowth",
    inspiration = "Inspiration",
    divineintervention = "Divine Intervention",
+   detectgreaterinvisiblity = "Detect Greater Invisibility",
+   unendingbreath = "Unending Breath",
+   layonhands = "Lay on Hands",
+   prayerofshadowprotection = "Prayer of Shadow Protection",
+   fireshield = "Fire Shield",
+   dampenmagic = "Dampen Magic",
+   amplifymagic = "Amplify magic",
 };

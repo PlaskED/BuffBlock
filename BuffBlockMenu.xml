@@ -39,7 +39,7 @@
 	<Frame name="BuffBlockOptions" toplevel="true" movable="true" parent="UIParent" enableMouse="true" hidden="true">
 		<TitleRegion setAllPoints="true"/>
 		<Size>
-			<AbsDimension x="600" y="550" />
+			<AbsDimension x="610" y="530" />
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER" />
@@ -241,6 +241,23 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
+			<CheckButton name="UnendingBreathCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="GreaterMightCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetBuffOption(self, "UnendingBreath");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetBuffOption(self, "UnendingBreath");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
 			<CheckButton name="ThornsCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
 					<Anchor point="Right" relativeTo="BattleShoutCheckbox">
@@ -394,6 +411,23 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
+			<CheckButton name="LayOnHandsCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AbolishDiseaseCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetBuffOption(self, "LayOnHands");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetBuffOption(self, "LayOnHands");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
 			<CheckButton name="RenewCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
 					<Anchor point="RIGHT" relativeTo="ThornsCheckbox">
@@ -479,12 +513,97 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
+			<CheckButton name="PrayerShadowCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="DivineInterventionCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetBuffOption(self, "PrayerOfShadowProtection");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetBuffOption(self, "PrayerOfShadowProtection");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="FireShieldCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="PrayerShadowCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetBuffOption(self, "FireShield");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetBuffOption(self, "FireShield");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="DampenMagicCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FireShieldCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetBuffOption(self, "DampenMagic");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetBuffOption(self, "DampenMagic");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="AmplifyMagicCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="DampenMagicCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetBuffOption(self, "AmplifyMagic");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetBuffOption(self, "AmplifyMagic");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="GreaterInvisibilityCheckbox" inherits="BuffBlockCheckboxTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AmplifyMagicCheckbox">
+						<Offset>
+							<AbsDimension x="0" y="-25" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						BuffBlock_GetBuffOption(self, "DetectGreaterInvisiblity");
+					</OnShow>
+					<OnClick>
+						BuffBlock_SetBuffOption(self, "DetectGreaterInvisiblity");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
 			
 			<!-- Macro Name Field -->
 			<EditBox letters="80" autoFocus="false" name="MacroNameEditBox">
 				<Size x="130" y="32" />
 				<Anchors>
-					<Anchor point="BOTTOM" relativeTo="GreaterMightCheckbox">
+					<Anchor point="BOTTOM" relativeTo="UnendingBreathCheckbox">
 						<Offset x="50" y="-50" />
 					</Anchor>
 				</Anchors>
@@ -554,6 +673,28 @@
 							</Anchors>
 						</FontString>
 					</Layer>
+					<Layer level="ARTWORK">
+						<FontString name="EstimatedMacroSizeTitleText" inherits="GameFontNormalSmall" text="Estimated Macro Size">
+							<Anchors>
+								<Anchor point="BOTTOM" relativeTo="MacroNameEditBox">
+									<Offset>
+										<AbsDimension x="0" y="-25"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+					<Layer level="ARTWORK">
+						<FontString name="EstimatedMacroSizeText" inherits="GameFontNormalSmall" text="0/255">
+							<Anchors>
+								<Anchor point="BOTTOM" relativeTo="EstimatedMacroSizeTitleText">
+									<Offset>
+										<AbsDimension x="0" y="-25"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
 				</Layers>
 				<Frames>
 					<Slider name="MacroBodyScrollFrame_HSlider" orientation="HORIZONTAL"
@@ -603,6 +744,9 @@
 							<OnShow>
 								BuffBlock_GetMacroBody(self);
 							</OnShow>
+							<OnTextChanged>
+								BuffBlock_EstimateMacroSize();
+							</OnTextChanged>
 						</Scripts>
 					</EditBox>
 				</ScrollChild>

@@ -59,6 +59,13 @@ function BuffBlock_GetMacroName(self)
 	self:SetText(macroName);
 end;
 
+function BuffBlock_EstimateMacroSize()
+   local macroEstimatedText = getglobal("EstimatedMacroSizeText");
+   local macroEditBox = getglobal("MacroBodyEditBox");
+   local macroLength = string.len(generateMacroBody(macroEditBox:GetText()));
+   macroEstimatedText:SetText(""..macroLength.."/255");
+end;
+
 function BuffBlock_GetMacroIcon(self)
 	local macroName = BUFF_CONFIG[BB_PlayerName].MacroName;
 	_, iconTexture, _, _ = GetMacroInfo(macroName);
@@ -88,9 +95,15 @@ function BuffBlock_GetBuffOption(self, buffName)
    labelString:SetText(label);
 end;
 
+function trim10(s)
+   local a = s:match('^%s*()')
+   local b = s:match('()%s*$', a)
+   return s:sub(a,b-1)
+end
+
 function filterCancelAuraCommands(macroBody)
 	local res = macroBody:gsub("/cancelaura[%s]+[%a%d%s\\(\\)]+", "");
-	return res;
+	return trim10(res);
 end;
 
 function formatBuffName(buffName)
@@ -107,6 +120,7 @@ function BuffBlock_SetBuffOption(self, buffName)
       BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] = nil;
       DEFAULT_CHAT_FRAME:AddMessage("Stopped blocking "..BB.BuffBlockMenuStrings[buffKey], 0.35, 0.75, 0.75);
    end;
+   BuffBlock_EstimateMacroSize();
 end;
 
 function KillBuff(i, buffName)
@@ -140,14 +154,7 @@ function KillBuffs()
    end;
 end;
 
--- Updates the BuffBlock macro according to the current config settings
--- If the macro does not exist, it is created.
--- Note: If outside of combat, it will not update/create macro
-function UpdateBuffBlockMacro(prependMacroBody)
-	if InCombatLockdown() then
-		return 0;
-	end;
-	
+function generateMacroBody(prependMacroBody)
 	local newMacroBody = prependMacroBody;
 	for k,v in pairs(BUFF_CONFIG[BB_PlayerName].Buffs) do
 		if v then
@@ -158,6 +165,18 @@ function UpdateBuffBlockMacro(prependMacroBody)
 			end;
 		end;
 	end;
+	return newMacroBody;
+end;
+
+-- Updates the BuffBlock macro according to the current config settings
+-- If the macro does not exist, it is created.
+-- Note: If outside of combat, it will not update/create macro
+function UpdateBuffBlockMacro(prependMacroBody)
+	if InCombatLockdown() then
+		return 0;
+	end;
+	
+	local newMacroBody = generateMacroBody(prependMacroBody);
 	
 	local macroId = 0;
 	local macroName = BUFF_CONFIG[BB_PlayerName].MacroName;
@@ -180,5 +199,3 @@ function PickupBuffBlockMacro()
 		PickupMacro(BUFF_CONFIG[BB_PlayerName].MacroName);
 	end;
 end;
-	
-	
