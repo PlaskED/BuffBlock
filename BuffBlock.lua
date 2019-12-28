@@ -58,6 +58,16 @@ function BuffBlock_GetMacroName(self)
 	self:SetText(macroName);
 end;
 
+function BuffBlock_GetMacroBody(self)
+	local macroName = BUFF_CONFIG[BB_PlayerName].MacroName;
+	local iconName = BUFF_CONFIG[BB_PlayerName].IconName;
+	_, iconTexture, macroBody, _ = GetMacroInfo(macroName);
+	if macroBody then
+		-- Set icon texture?
+		self:SetText(filterCancelAuraCommands(macroBody));
+	end
+end;
+
 function BuffBlock_GetBuffOption(self, buffName)
    local labelString = getglobal(self:GetName().."Text");
    local buffKey = formatBuffName(buffName);
@@ -69,6 +79,11 @@ function BuffBlock_GetBuffOption(self, buffName)
       self:SetChecked(nil);
    end;
    labelString:SetText(label);
+end;
+
+function filterCancelAuraCommands(macroBody)
+	local res = macroBody:gsub("/cancelaura[%s]+[%a%d%s\\(\\)]+", "");
+	return res;
 end;
 
 function formatBuffName(buffName)
@@ -102,9 +117,7 @@ function KillBuffs()
    local buff = UnitBuff("player", i, "HELPFUL");
    while buff do
       local buffName = select(1, buff);
---	  print("buffName: ", buffName);
       local buffKey = formatBuffName(buffName);
---	  print("buffKey: ", buffKey);
       if BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] then
 		if (buffKey == "greaterblessingofsalvation" or buffKey == "blessingofsalvation") then
 			local _, active, _, _, _ = GetShapeshiftFormInfo(2);

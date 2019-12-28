@@ -589,17 +589,22 @@
 					</Slider>
 				</Frames>
 				<ScrollChild>
-						<EditBox letters="255" autoFocus="false" multiLine="true" name="MacroBodyEditBox">
-							<FontString inherits="ChatFontNormal"/>
-							<Size x="450" y="200"/>
-							<Layers>
-								<Layer level="ARTWORK">
-									<Texture setAllPoints="true">
-									<Color r="0.7" g="0.7" b="0.7" a="0.15"/>
-									</Texture>
-								</Layer>
-							</Layers>
-						</EditBox>
+					<EditBox letters="255" autoFocus="false" multiLine="true" name="MacroBodyEditBox">
+						<FontString inherits="ChatFontNormal"/>
+						<Size x="450" y="200"/>
+						<Layers>
+							<Layer level="ARTWORK">
+								<Texture setAllPoints="true">
+								<Color r="0.7" g="0.7" b="0.7" a="0.15"/>
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnShow>
+								BuffBlock_GetMacroBody(self);
+							</OnShow>
+						</Scripts>
+					</EditBox>
 				</ScrollChild>
 			</ScrollFrame>
 			
