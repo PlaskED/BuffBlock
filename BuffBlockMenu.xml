@@ -564,7 +564,7 @@
 						</Anchors>
 						<Scripts>
 							<OnValueChanged>
-								MacroBodyScrollFrame:SetHorizontalScroll(-1 * self:GetValue())
+								MacroBodyScrollFrame:SetHorizontalScroll( self:GetValue())
 							</OnValueChanged>
 						</Scripts>
 						<ThumbTexture name="$parentThumbTexture" file="Interface\Buttons\UI-ScrollBar-Knob">
@@ -589,25 +589,17 @@
 					</Slider>
 				</Frames>
 				<ScrollChild>
-					<Frame>
-						<Size x="350" y="100"/>
 						<EditBox letters="255" autoFocus="false" multiLine="true" name="MacroBodyEditBox">
 							<FontString inherits="ChatFontNormal"/>
+							<Size x="450" y="200"/>
+							<Layers>
+								<Layer level="ARTWORK">
+									<Texture setAllPoints="true">
+									<Color r="0.7" g="0.7" b="0.7" a="0.15"/>
+									</Texture>
+								</Layer>
+							</Layers>
 						</EditBox>
-				
-						<!--
-						<Layers>
-							<Layer level="ARTWORK">
-								<Texture file="Interface\Icons\Spell_Shadow_DemonicFortitude">
-								<Size x="100" y="100"/>
-								<Anchors>
-									<Anchor point="CENTER"/>
-								</Anchors>
-								</Texture>
-							</Layer>
-						</Layers>
-						-->
-					</Frame>
 				</ScrollChild>
 			</ScrollFrame>
 			
