@@ -182,7 +182,7 @@ end;
 function generateMacroBody(prependMacroBody)
 	local newMacroBody = prependMacroBody;
 	for k,v in pairs(BUFF_CONFIG[BB_PlayerName].Buffs) do
-		if v then
+		if (v == 2)then
 			if (string.len(newMacroBody) > 0) then
 				newMacroBody = newMacroBody.."\n/cancelaura "..BB.BuffBlockMenuStrings[k];
 			else
