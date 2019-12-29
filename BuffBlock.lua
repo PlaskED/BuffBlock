@@ -205,13 +205,15 @@ function UpdateBuffBlockMacro(prependMacroBody)
 	
 	local macroId = 0;
 	local macroName = BUFF_CONFIG[BB_PlayerName].MacroName;
-	if GetMacroIndexByName(macroName) == 0 then
-		--Macro does not exist, create it
-		local iconName = BB.DEFAULT_ICON;
-		macroId = CreateMacro(macroName, iconName, newMacroBody, 1);
-	else
-		--Update existing macro
-		macroId = EditMacro(macroName, nil, nil, newMacroBody, 1, 1);
+	if (string.len(macroName) > 0) then 
+		if GetMacroIndexByName(macroName) == 0 then
+			--Macro does not exist, create it
+			local iconName = BB.DEFAULT_ICON;
+			macroId = CreateMacro(macroName, iconName, newMacroBody, 1);
+		else
+			--Update existing macro
+			macroId = EditMacro(macroName, nil, nil, newMacroBody, 1, 1);
+		end;
 	end;
 	
 	return macroId;
