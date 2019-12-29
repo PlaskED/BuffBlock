@@ -205,9 +205,9 @@ function UpdateBuffBlockMacro(prependMacroBody)
 	
 	local macroId = 0;
 	local macroName = BUFF_CONFIG[BB_PlayerName].MacroName;
-	local iconName = BUFF_CONFIG[BB_PlayerName].IconName;
 	if GetMacroIndexByName(macroName) == 0 then
 		--Macro does not exist, create it
+		local iconName = BB.DEFAULT_ICON;
 		macroId = CreateMacro(macroName, iconName, newMacroBody, 1);
 	else
 		--Update existing macro
