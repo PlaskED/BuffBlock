@@ -83,16 +83,22 @@ function BuffBlock_GetMacroBody(self)
 end;
 
 function BuffBlock_GetBuffOption(self, buffName)
-   local labelString = getglobal(self:GetName().."Text");
-   local buffKey = formatBuffName(buffName);
-   local label = BB.BuffBlockMenuStrings[buffKey] or "ERROR";
+	local labelString = getglobal(self:GetName().."Text");
+	local buffKey = formatBuffName(buffName);
+	local label = BB.BuffBlockMenuStrings[buffKey] or "ERROR";
    
-   if BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] or nil then
-      self:SetChecked(true);
-   else
-      self:SetChecked(nil);
-   end;
-   labelString:SetText(label);
+	local state = BUFF_CONFIG[BB_PlayerName].Buffs[buffKey];
+	if (state == 1) then
+		self:SetChecked(true);
+		labelString:SetTextColor(1, 0.82, 0);
+	elseif (state == 2) then
+		self:SetChecked(true);
+		labelString:SetTextColor(0.5, 1, 0);
+	else
+		self:SetChecked(false);
+		labelString:SetTextColor(1, 0.82, 0);
+	end;
+	labelString:SetText(label);
 end;
 
 function trim10(s)
@@ -111,16 +117,34 @@ function formatBuffName(buffName)
 end;
 
 function BuffBlock_SetBuffOption(self, buffName)
-   local checked = self:GetChecked();
-	buffKey = formatBuffName(buffName);
-   if checked then
-	  BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] = true;
-      DEFAULT_CHAT_FRAME:AddMessage("Blocking "..BB.BuffBlockMenuStrings[buffKey], 0.35, 0.75, 0.75);
-   else
-      BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] = nil;
-      DEFAULT_CHAT_FRAME:AddMessage("Stopped blocking "..BB.BuffBlockMenuStrings[buffKey], 0.35, 0.75, 0.75);
-   end;
-   BuffBlock_EstimateMacroSize();
+	local checked = self:GetChecked();
+	local buffKey = formatBuffName(buffName);
+	local state = BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] or 0;
+	local labelString = getglobal(self:GetName().."Text");
+	
+	if checked then
+		if (state == 0) then
+			BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] = 1;
+			DEFAULT_CHAT_FRAME:AddMessage("Blocking "..BB.BuffBlockMenuStrings[buffKey], 0.35, 0.75, 0.75);
+			labelString:SetTextColor(1, 0.82, 0);
+		else
+			print("error 1, please report");
+		end;
+	else
+		if (state == 1) then
+			BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] = 2;
+			DEFAULT_CHAT_FRAME:AddMessage("Blocking + Macroing "..BB.BuffBlockMenuStrings[buffKey], 0.35, 0.75, 0.75);
+			labelString:SetTextColor(0.5, 1, 0);
+			self:SetChecked(true);
+		elseif (state == 2) then
+			BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] = 0;
+			DEFAULT_CHAT_FRAME:AddMessage("Stopped blocking "..BB.BuffBlockMenuStrings[buffKey], 0.35, 0.75, 0.75);
+			labelString:SetTextColor(1, 0.82, 0);
+		else 
+			print("error 2, please report");
+		end;
+	end;
+	BuffBlock_EstimateMacroSize();
 end;
 
 function KillBuff(i, buffName)
@@ -139,7 +163,8 @@ function KillBuffs()
    while buff do
       local buffName = select(1, buff);
       local buffKey = formatBuffName(buffName);
-      if BUFF_CONFIG[BB_PlayerName].Buffs[buffKey] then
+	  local state = BUFF_CONFIG[BB_PlayerName].Buffs[buffKey];
+      if (state == 1 or state == 2) then
 		if (buffKey == "greaterblessingofsalvation" or buffKey == "blessingofsalvation") then
 			local _, active, _, _, _ = GetShapeshiftFormInfo(2);
 			if (active) then

@@ -39,7 +39,7 @@
 	<Frame name="BuffBlockOptions" toplevel="true" movable="true" parent="UIParent" enableMouse="true" hidden="true">
 		<TitleRegion setAllPoints="true"/>
 		<Size>
-			<AbsDimension x="610" y="530" />
+			<AbsDimension x="610" y="540" />
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER" />
@@ -105,7 +105,7 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
-			<CheckButton name="SalvationCheckbox" inherits="BuffBlockCheckboxTemplate">
+			<CheckButton name="BlessingOfSalvationCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="BattleShoutCheckbox">
 						<Offset>
@@ -122,9 +122,9 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
-			<CheckButton name="GreaterSalvationCheckbox" inherits="BuffBlockCheckboxTemplate">
+			<CheckButton name="GreaterBlessingOfSalvationCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="SalvationCheckbox">
+					<Anchor point="TOPLEFT" relativeTo="BlessingOfSalvationCheckbox">
 						<Offset>
 							<AbsDimension x="0" y="-25" />
 						</Offset>
@@ -139,9 +139,9 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
-			<CheckButton name="LightCheckbox" inherits="BuffBlockCheckboxTemplate">
+			<CheckButton name="BlessingOfLightCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="GreaterSalvationCheckbox">
+					<Anchor point="TOPLEFT" relativeTo="GreaterBlessingOfSalvationCheckbox">
 						<Offset>
 							<AbsDimension x="0" y="-25" />
 						</Offset>
@@ -156,9 +156,9 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
-			<CheckButton name="GreaterLightCheckbox" inherits="BuffBlockCheckboxTemplate">
+			<CheckButton name="GreaterBlessingOfLightCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="LightCheckbox">
+					<Anchor point="TOPLEFT" relativeTo="BlessingOfLightCheckbox">
 						<Offset>
 							<AbsDimension x="0" y="-25" />
 						</Offset>
@@ -173,9 +173,9 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
-			<CheckButton name="SanctuaryCheckbox" inherits="BuffBlockCheckboxTemplate">
+			<CheckButton name="BlessingOfSanctuaryCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="GreaterLightCheckbox">
+					<Anchor point="TOPLEFT" relativeTo="GreaterBlessingOfLightCheckbox">
 						<Offset>
 							<AbsDimension x="0" y="-25" />
 						</Offset>
@@ -190,9 +190,9 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
-			<CheckButton name="GreaterSanctuaryCheckbox" inherits="BuffBlockCheckboxTemplate">
+			<CheckButton name="GreaterBlessingOfSanctuaryCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="SanctuaryCheckbox">
+					<Anchor point="TOPLEFT" relativeTo="BlessingOfSanctuaryCheckbox">
 						<Offset>
 							<AbsDimension x="0" y="-25" />
 						</Offset>
@@ -207,9 +207,9 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
-			<CheckButton name="MightCheckbox" inherits="BuffBlockCheckboxTemplate">
+			<CheckButton name="BlessingOfMightCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="GreaterSanctuaryCheckbox">
+					<Anchor point="TOPLEFT" relativeTo="GreaterBlessingOfSanctuaryCheckbox">
 						<Offset>
 							<AbsDimension x="0" y="-25" />
 						</Offset>
@@ -224,9 +224,9 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
-			<CheckButton name="GreaterMightCheckbox" inherits="BuffBlockCheckboxTemplate">
+			<CheckButton name="GreaterBlessingOfMightCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="MightCheckbox">
+					<Anchor point="TOPLEFT" relativeTo="BlessingOfMightCheckbox">
 						<Offset>
 							<AbsDimension x="0" y="-25" />
 						</Offset>
@@ -243,7 +243,7 @@
 			</CheckButton>
 			<CheckButton name="UnendingBreathCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="GreaterMightCheckbox">
+					<Anchor point="TOPLEFT" relativeTo="GreaterBlessingOfMightCheckbox">
 						<Offset>
 							<AbsDimension x="0" y="-25" />
 						</Offset>
@@ -513,7 +513,7 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
-			<CheckButton name="PrayerShadowCheckbox" inherits="BuffBlockCheckboxTemplate">
+			<CheckButton name="PrayerOfShadowCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="DivineInterventionCheckbox">
 						<Offset>
@@ -532,7 +532,7 @@
 			</CheckButton>
 			<CheckButton name="FireShieldCheckbox" inherits="BuffBlockCheckboxTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="PrayerShadowCheckbox">
+					<Anchor point="TOPLEFT" relativeTo="PrayerOfShadowCheckbox">
 						<Offset>
 							<AbsDimension x="0" y="-25" />
 						</Offset>
