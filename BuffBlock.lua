@@ -49,14 +49,22 @@ end;
 
 function BuffBlock_SaveSettings()
 	local macroName = getglobal("MacroNameEditBox"):GetText();
-	BUFF_CONFIG[BB_PlayerName].MacroName = macroName;
-	local prependMacroBody = getglobal("MacroBodyEditBox"):GetText();
-	UpdateBuffBlockMacro(prependMacroBody);
+	macroName = trim10(macroName);
+	if (string.len(macroName) > 0) then
+		BUFF_CONFIG[BB_PlayerName].MacroName = macroName;
+		local prependMacroBody = getglobal("MacroBodyEditBox"):GetText();
+		UpdateBuffBlockMacro(prependMacroBody);
+	end;
 end;
 
 function BuffBlock_GetMacroName(self)
-	local macroName = BUFF_CONFIG[BB_PlayerName].MacroName or "ERROR";
-	self:SetText(macroName);
+	local macroName = BUFF_CONFIG[BB_PlayerName].MacroName or BB.BB_default["MacroName"];
+	macroName = trim10(macroName);
+	if (string.len(macroName) > 0) then
+		self:SetText(macroName);
+	else
+		self:SetText(BB.BB_default["MacroName"]);
+	end;
 end;
 
 function BuffBlock_EstimateMacroSize()
@@ -205,15 +213,13 @@ function UpdateBuffBlockMacro(prependMacroBody)
 	
 	local macroId = 0;
 	local macroName = BUFF_CONFIG[BB_PlayerName].MacroName;
-	if (string.len(macroName) > 0) then 
-		if GetMacroIndexByName(macroName) == 0 then
-			--Macro does not exist, create it
-			local iconName = BB.DEFAULT_ICON;
-			macroId = CreateMacro(macroName, iconName, newMacroBody, 1);
-		else
-			--Update existing macro
-			macroId = EditMacro(macroName, nil, nil, newMacroBody, 1, 1);
-		end;
+	if GetMacroIndexByName(macroName) == 0 then
+		--Macro does not exist, create it
+		local iconName = BB.DEFAULT_ICON;
+		macroId = CreateMacro(macroName, iconName, newMacroBody, 1);
+	else
+		--Update existing macro
+		macroId = EditMacro(macroName, nil, nil, newMacroBody, 1, 1);
 	end;
 	
 	return macroId;
